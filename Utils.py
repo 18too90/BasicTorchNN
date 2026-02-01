@@ -28,3 +28,30 @@ def plot_results(model, distances, times):
     plt.legend()
     plt.grid(True)
     plt.show()
+
+def plot_nonlinear_comparison(model, new_distances, new_times):
+    """
+    Args:
+        model: The trained model to be evaluated.
+        new_distances: The new input data for generating predictions.
+        new_times: The actual target values for comparison.
+    """
+    model.eval()
+
+    with torch.no_grad():
+        predictions = model(new_distances)
+    
+    plt.figure(figsize=(8, 6))
+
+    plt.plot(new_distances.numpy(), new_times.numpy(), color='orange',
+             marker='o', linestyle='None', label='Actual Data (Bikes & Cars)')
+    
+    plt.plot(new_distances.numpy(), predictions.numpy(), color='green',
+             marker='None', label='Linear Model Predictions')
+    
+    plt.title('Linear Model vs. Non-Linear Reality')
+    plt.xlabel('Distance (miles)')
+    plt.ylabel('Time (minutes)')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
