@@ -1,5 +1,6 @@
 import torch
 import matplotlib.pyplot as plt
+import numpy
 
 def plot_results(model, distances, times):
     """
