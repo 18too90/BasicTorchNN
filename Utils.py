@@ -56,3 +56,26 @@ def plot_nonlinear_comparison(model, new_distances, new_times):
     plt.legend()
     plt.grid(True)
     plt.show()
+
+def plot_nonlinear_comparisons(predictions, new_distances, new_times):
+    """
+    Args:
+        model: The trained model to be evaluated.
+        new_distances: The new input data for generating predictions.
+        new_times: The actual target values for comparison.
+    """
+    
+    plt.figure(figsize=(8, 6))
+
+    plt.plot(new_distances, new_times, color='orange',
+             marker='o', linestyle='None', label='Actual Data (Bikes & Cars)')
+    
+    plt.plot(new_distances, predictions, color='green',
+             marker='None', label='Linear Model Predictions')
+    
+    plt.title('Linear Model vs. Non-Linear Reality')
+    plt.xlabel('Distance (miles)')
+    plt.ylabel('Time (minutes)')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
